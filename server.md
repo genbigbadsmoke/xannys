@@ -1,0 +1,1 @@
+mongodb+srv://smkeszn:smokeSZN1234.@xanny.ov9hynl.mongodb.net/XannyStore?retryWrites=true&w=majority

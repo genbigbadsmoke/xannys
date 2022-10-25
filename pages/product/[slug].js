@@ -14,7 +14,7 @@ export default function ProductScreen(props) {
   const { state, dispatch } = useContext(Store);
   const router = useRouter();
   if (!product) {
-    return <Layout title="Product Not Found">Product Not Found</Layout>;
+    return <Layout title="Produt Not Found">Produt Not Found</Layout>;
   }
 
   const addToCartHandler = async () => {
@@ -35,34 +35,41 @@ export default function ProductScreen(props) {
       <div className="py-2">
         <Link href="/">back to products</Link>
       </div>
-      <div className="grid md:grid-cols-4 md:gap-3">
-        <div className="md:col-span-2">
+      <div className="grid md:grid-cols-4.5 md:gap-4 lg:grid-cols-3">
+        <div className="md:col-span-1.5">
           <Image
             src={product.image}
             alt={product.name}
-            width={640}
-            height={640}
+            width={140}
+            height={140}
             layout="responsive"
           ></Image>
         </div>
-        <div>
-          <ul>
-            <li>
-              <h1 className="text-lg">{product.name}</h1>
-            </li>
-            <li>Category: {product.category}</li>
-            <li>Brand: {product.brand}</li>
-            <li>
+        <div className='card p-5'>
+          <div className='mb-2 flex justify-between'>
+            <div className="text-lg">{product.name}</div>
+          </div>
+          <div className='mb-2 flex justify-between'>
+            <div>Category:</div>
+            <div>{product.category}</div>
+          </div>
+          <div className='mb-2 flex justify-between'>
+            <div>Brand:</div>
+            <div>{product.brand}</div>
+          </div>
+          <div className='mb-2 flex justify-between'>
               {product.rating} of {product.numReviews} reviews
-            </li>
-            <li>Description: {product.description}</li>
-          </ul>
+          </div>
+          <div className='mb-2 flex justify-between'>
+            <div>Description:</div>
+            <div>{product.description}</div>
+          </div>
         </div>
         <div>
           <div className="card p-5">
             <div className="mb-2 flex justify-between">
               <div>Price</div>
-              <div>${product.price}</div>
+              <div>₦{product.price}</div>
             </div>
             <div className="mb-2 flex justify-between">
               <div>Status</div>

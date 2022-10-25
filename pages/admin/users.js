@@ -110,16 +110,11 @@ function AdminUsersScreen() {
                 <tbody>
                   {users.map((user) => (
                     <tr key={user._id} className="border-b">
-                      <td className=" p-5 ">{user._id.substring(20, 24)}</td>
+                      <td className=" p-5 ">{user._id.substring(0, 2)}</td>
                       <td className=" p-5 ">{user.name}</td>
                       <td className=" p-5 ">{user.email}</td>
                       <td className=" p-5 ">{user.isAdmin ? 'YES' : 'NO'}</td>
                       <td className=" p-5 ">
-                        <Link href={`/admin/user/${user._id}`} passHref>
-                          <a type="button" className="default-button">
-                            Edit
-                          </a>
-                        </Link>
                         &nbsp;
                         <button
                           type="button"

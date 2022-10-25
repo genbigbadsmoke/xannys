@@ -5,6 +5,12 @@ const handler = async (req, res) => {
   if (!session) {
     return res.status(401).send('signin required');
   }
-  res.send(process.env.PAYSTACK_CLIENT_ID);
+  const config = {
+    reference: (new Date()).getTime().toString(),
+    email: session.user.name,
+    amount: totalPrice*100,
+    publicKey: process.env.PAYSTACK_CLIENT_ID,
+  };
+  res.send(config);
 };
 export default handler;

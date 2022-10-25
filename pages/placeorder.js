@@ -11,7 +11,6 @@ import { getError } from '../utils/error';
 import { Store } from '../utils/Store';
 
 export default function PlaceOrderScreen() {
-  let dollar = '$';
   const { state, dispatch } = useContext(Store);
   const { cart } = state;
   const { cartItems, shippingAddress, paymentMethod } = cart;
@@ -22,7 +21,7 @@ export default function PlaceOrderScreen() {
     cartItems.reduce((a, c) => a + c.quantity * c.price, 0)
   ); // 123.4567 => 123.46
 
-  const shippingPrice = itemsPrice > 50000 ? 0 : 15;
+  const shippingPrice = itemsPrice > 200 ? 0 : 15;
   const taxPrice = round2(itemsPrice * 0.15);
   const totalPrice = round2(itemsPrice + shippingPrice + taxPrice);
 
@@ -100,7 +99,7 @@ export default function PlaceOrderScreen() {
                     <th className="px-5 text-left">Item</th>
                     <th className="    p-5 text-right">Quantity</th>
                     <th className="  p-5 text-right">Price</th>
-                    <th className="p-5 text-right">Subtotal</th>
+                    <th className="p-5 text-right">Total</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -121,9 +120,9 @@ export default function PlaceOrderScreen() {
                         </Link>
                       </td>
                       <td className=" p-5 text-right">{item.quantity}</td>
-                      <td className="p-5 text-right">{dollar}{item.price}</td>
+                      <td className="p-5 text-right">₦{item.price}</td>
                       <td className="p-5 text-right">
-                        {dollar}{item.quantity * item.price}
+                        ₦{item.quantity * item.price}
                       </td>
                     </tr>
                   ))}
@@ -141,25 +140,25 @@ export default function PlaceOrderScreen() {
                 <li>
                   <div className="mb-2 flex justify-between">
                     <div>Items</div>
-                    <div>{dollar}{itemsPrice}</div>
+                    <div>₦{itemsPrice}</div>
                   </div>
                 </li>
                 <li>
                   <div className="mb-2 flex justify-between">
                     <div>Tax</div>
-                    <div>{dollar}{taxPrice}</div>
+                    <div>₦{taxPrice}</div>
                   </div>
                 </li>
                 <li>
                   <div className="mb-2 flex justify-between">
                     <div>Shipping</div>
-                    <div>{dollar}{shippingPrice}</div>
+                    <div>₦{shippingPrice}</div>
                   </div>
                 </li>
                 <li>
                   <div className="mb-2 flex justify-between">
                     <div>Total</div>
-                    <div>{dollar}{totalPrice}</div>
+                    <div>₦{totalPrice}</div>
                   </div>
                 </li>
                 <li>

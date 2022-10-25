@@ -3,7 +3,6 @@ import Link from 'next/link';
 import React from 'react';
 
 export default function ProductItem({ product, addToCartHandler }) {
-  let dollar = '$';
   return (
     <div className="card">
       <Link href={`/product/${product.slug}`}>
@@ -21,7 +20,8 @@ export default function ProductItem({ product, addToCartHandler }) {
             <h2 className="text-lg">{product.name}</h2>
           </a>
         </Link>
-        <p>{dollar}{product.price}</p>
+        <p className="mb-2">{product.brand}</p>
+        <p>₦{product.price}</p>
         <button
           className="primary-button"
           type="button"
